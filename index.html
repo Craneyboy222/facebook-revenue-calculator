@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facebook Page Revenue Calculator - How Much Can You Earn?</title>
+    <meta name="description" content="Calculate your potential Facebook page income from sponsored content, affiliate marketing, digital products, memberships and brand deals. Free revenue calculator tool.">
+    <meta name="keywords" content="facebook page revenue calculator, facebook income calculator, how much can I make on facebook, facebook page earnings, social media income">
+    <link rel="canonical" href="https://craneyboy222.github.io/facebook-page-revenue-calculator/">
+    
+    <!-- Open Graph tags -->
+    <meta property="og:title" content="Facebook Page Revenue Calculator - Estimate Your Earnings">
+    <meta property="og:description" content="Calculate your potential monthly income from your Facebook page across 5 revenue streams. Get realistic estimates based on your followers and engagement.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://craneyboy222.github.io/facebook-page-revenue-calculator/">
+    <meta property="og:image" content="https://craneyboy222.github.io/facebook-page-revenue-calculator/og-image.jpg">
+    <meta property="og:locale" content="en_GB">
+    
+    <!-- Twitter Card tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Facebook Page Revenue Calculator">
+    <meta name="twitter:description" content="Calculate your potential monthly income from your Facebook page across 5 revenue streams.">
+    <meta name="twitter:image" content="https://craneyboy222.github.io/facebook-page-revenue-calculator/og-image.jpg">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --bg-color: #fafaf7;
+            --accent-color: #c75c2e;
+            --text-color: #2c3e50;
+            --light-gray: #f8f9fa;
+            --border-color: #e9ecef;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+        
+        h1 {
+            font-family: 'Fraunces', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 3rem;
+            font-size: 1.1rem;
+        }
+        
+        .form-section {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--text-color);
+        }
+        
+        input, select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: 'Inter', sans-serif;
+            transition: border-color 0.3s ease;
+        }
+        
+        input:focus, select:focus {
+            outline: none;
+            border-color: var(--accent-color);
+        }
+        
+        .calculate-btn {
+            width: 100%;
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .calculate-btn:hover {
+            background: #b54b22;
+            transform: translateY(-2px);
+        }
+        
+        .results-section {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            display: none;
+        }
+        
+        .results-title {
+            font-family: 'Fraunces', serif;
+            font-size: 1.8rem;
+            color: var(--accent-color);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        
+        .revenue-stream {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            margin-bottom: 0.5rem;
+            background: var(--light-gray);
+            border-radius: 8px;
+            border-left: 4px solid var(--accent-color);
+        }
+        
+        .revenue-stream-name {
+            font-weight: 600;
+            color: var(--text-color);
+        }
+        
+        .revenue-amount {
+            font-weight: 600;
+            color: var(--accent-color);
+            font-size: 1.1rem;
+        }
+        
+        .total-revenue {
+            background: var(--accent-color);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            text-align: center;
+        }
+        
+        .total-revenue h3 {
+            font-family: 'Fraunces', serif;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .total-amount {
+            font-size: 2rem;
+            font-weight: 700;
+        }
+        
+        .calculation-details {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .calculation-details h4 {
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+            font-family: 'Fraunces', serif;
+        }
+        
+        .calculation-item {
+            margin-bottom: 0.8rem;
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        .cta-section {
+            background: linear-gradient(135deg, var(--accent-color), #d4672e);
+            color: white;
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .cta-text {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+        }
+        
+        .cta-btn {
+            display: inline-block;
+            background: white;
+            color: var(--accent-color);
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: #666;
+            border-top: 1px solid var(--border-color);
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .form-section, .results-section, .cta-section {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Facebook Page Revenue Calculator</h1>
+        <p class="subtitle">Discover your earning potential across 5 proven revenue streams</p>
+        
+        <div class="form-section">
+            <div class="form-group">
+                <label for="followers">Number of Followers</label>
+                <input type="number" id="followers" placeholder="e.g., 10000" min="100" max="10000000">
+            </div>
+            
+            <div class="form-group">
+                <label for="engagement">Engagement Rate (%)</label>
+                <input type="number" id="engagement" placeholder="e.g., 3.5" min="0.1" max="20" step="0.1">
+            </div>
+            
+            <div class="form-group">
+                <label for="niche">Niche Category</label>
+                <select id="niche">
+                    <option value="">Select your niche</option>
+                    <option value="b2b">B2B / Business</option>
+                    <option value="lifestyle">Lifestyle</option>
+                    <option value="hobby">Hobby</option>
+                    <option value="parenting">Parenting</option>
+                    <option value="finance">Finance</option>
+                    <option value="golf-other">Golf / Other Sports</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="hours">Hours Available Per Week</label>
+                <input type="number" id="hours" placeholder="e.g., 10" min="1" max="80">
+            </div>
+            
+            <button class="calculate-btn" onclick="calculateRevenue()">Calculate My Revenue Potential</button>
+        </div>
+        
+        <div id="results" class="results-section">
+            <h2 class="results-title">Your Monthly Revenue Estimate</h2>
+            
+            <div id="revenue-breakdown"></div>
+            
+            <div class="total-revenue">
+                <h3>Total Monthly Estimate</h3>
+                <div class="total-amount" id="total-amount">£0 - £0</div>
+            </div>
+            
+            <div class="calculation-details">
+                <h4>How We Calculated This</h4>
+                <div id="calculation-explanations"></div>
+            </div>
+        </div>
+        
+        <div id="cta" class="cta-section" style="display: none;">
+            <p class="cta-text">You can hit the top of this range with the right framework — the full playbook walks through each revenue stream</p>
+            <a href="https://socialsunplugged.com/products/niche-community-blueprint?utm_source=github-revenue-calc&utm_medium=tool&utm_campaign=organic" class="cta-btn" target="_blank">Get The Complete Revenue Playbook</a>
+        </div>
+        
+        <footer class="footer">
+            <p>Made by Socials Unplugged</p>
+        </footer>
+    </div>
+
+    <script>
+        function calculateRevenue() {
+            const followers = parseInt(document.getElementById('followers').value);
+            const engagement = parseFloat(document.getElementById('engagement').value);
+            const niche = document.getElementById('niche').value;
+            const hours = parseInt(document.getElementById('hours').value);
+            
+            // Validation
+            if (!followers || !engagement || !niche || !hours) {
+                alert('Please fill in all fields to calculate your revenue potential.');
+                return;
+            }
+            
+            if (followers < 100) {
+                alert('Minimum 100 followers required for meaningful revenue calculations.');
+                return;
+            }
+            
+            // Niche multipliers based on industry data
+            const nicheMultipliers = {
+                'b2b': { sponsored: 1.8, affiliate: 2.2, digital: 2.5, membership: 2.0, brand: 1.9 },
+                'finance': { sponsored: 1.6, affiliate: 2.0, digital: 2.2, membership: 1.8, brand: 1.7 },
+                'lifestyle': { sponsored: 1.2, affiliate: 1.4, digital: 1.3, membership: 1.2, brand: 1.3 },
+                'parenting': { sponsored: 1.3, affiliate: 1.6, digital: 1.5, membership: 1.4, brand: 1.4 },
+                'hobby': { sponsored: 1.0, affiliate: 1.2, digital: 1.2, membership: 1.1, brand: 1.0 },
+                'golf-other': { sponsored: 1.1, affiliate: 1.3, digital: 1.1, membership: 1.0, brand: 1.2 }
+            };
+            
+            const multiplier = nicheMultipliers[niche];
+            const engagedFollowers = followers * (engagement / 100);
+            const timeMultiplier = Math.min(hours / 10, 2.0); // Cap at 2x for 20+ hours
+            
+            // Revenue calculations (conservative estimates)
+            
+            // 1. Sponsored Content: £0.04-0.08 per follower per post, 2-4 posts/month
+            const sponsoredLow = Math.round((followers * 0.04 * 2 * multiplier.sponsored) * timeMultiplier);
+            const sponsoredHigh = Math.round((followers * 0.08 * 4 * multiplier.sponsored) * timeMultiplier);
+            
+            // 2. Affiliate Marketing: Based on engaged followers and conversion rates
+            const affiliateLow = Math.round((engagedFollowers * 0.02 * multiplier.affiliate) * timeMultiplier);
+            const affiliateHigh = Math.round((engagedFollowers * 0.08 * multiplier.affiliate) * timeMultiplier);
+            
+            // 3. Digital Products: Based on audience size and niche value
+            const digitalLow = Math.round((followers * 0.01 * multiplier.digital) * timeMultiplier);
+            const digitalHigh = Math.round((followers * 0.05 * multiplier.digital) * timeMultiplier);
+            
+            // 4. Community Memberships: £5-25/month per member, 0.5-3% conversion
+            const membershipLow = Math.round((followers * 0.005 * 5 * multiplier.membership) * timeMultiplier);
+            const membershipHigh = Math.round((followers * 0.03 * 25 * multiplier.membership) * timeMultiplier);
+            
+            // 5. Brand Deals: Based on follower count and engagement
+            const brandLow = Math.round((followers * 0.02 * multiplier.brand) * timeMultiplier);
+            const brandHigh = Math.round((followers * 0.08 * multiplier.brand) * timeMultiplier);
+            
+            // Calculate totals
+            const totalLow = sponsoredLow + affiliateLow + digitalLow + membershipLow + brandLow;
+            const totalHigh = sponsoredHigh + affiliateHigh + digitalHigh + membershipHigh + brandHigh;
+            
+            // Display results
+            displayResults({
+                sponsored: [sponsoredLow, sponsoredHigh],
+                affiliate: [affiliateLow, affiliateHigh],
+                digital: [digitalLow, digitalHigh],
+                membership: [membershipLow, membershipHigh],
+                brand: [brandLow, brandHigh],
+                total: [totalLow, totalHigh]
+            }, followers, engagement, niche, hours);
+        }
+        
+        function displayResults(revenue, followers, engagement, niche, hours) {
+            const resultsSection = document.getElementById('results');
+            const breakdownDiv = document.getElementById('revenue-breakdown');
+            const totalDiv = document.getElementById('total-amount');
+            const explanationsDiv = document.getElementById('calculation-explanations');
+            const ctaSection = document.getElementById('cta');
+            
+            // Revenue streams breakdown
+            const streams = [
+                { name: 'Sponsored Content', key: 'sponsored' },
+                { name: 'Affiliate Marketing', key: 'affiliate' },
+                { name: 'Digital Products', key: 'digital' },
+                { name: 'Community Memberships', key: 'membership' },
+                { name: 'Brand Deals', key: 'brand' }
+            ];
+            
+            breakdownDiv.innerHTML = streams.map(stream => `
+                <div class="revenue-stream">
+                    <span class="revenue-stream-name">${stream.name}</span>
+                    <span class="revenue-amount">£${revenue[stream.key][0].toLocaleString()} - £${revenue[stream.key][1].toLocaleString()}</span>
+                </div>
+            `).join('');
+            
+            // Total amount
+            totalDiv.textContent = `£${revenue.total[0].toLocaleString()} - £${revenue.total[1].toLocaleString()}`;
+            
+            // Calculation explanations
+            const nicheNames = {
+                'b2b': 'B2B/Business',
+                'finance': 'Finance',
+                'lifestyle': 'Lifestyle',
+                'parenting': 'Parenting',
+                'hobby': 'Hobby',
+                'golf-other': 'Golf/Sports'
+            };
+            
+            explanationsDiv.innerHTML = `
+                <div class="calculation-item">
+                    <strong>Sponsored Content:</strong> We used £0.04-0.08 per follower per sponsored post based on industry data for ${nicheNames[niche]} niches, assuming 2-4 posts per month.
+                </div>
+                <div class="calculation-item">
+                    <strong>Affiliate Marketing:</strong> Calculated using ${Math.round(followers * (engagement/100)).toLocaleString()} engaged followers with 2-8% conversion rates typical for your niche.
+                </div>
+                <div class="calculation-item">
+                    <strong>Digital Products:</strong> Based on industry averages of £1-5 revenue per follower annually for ${nicheNames[niche]} content creators.
+                </div>
+                <div class="calculation-item">
+                    <strong>Community Memberships:</strong> Assumes £5-25/month membership fees with 0.5-3% conversion rates from your audience.
+                </div>
+                <div class="calculation-item">
+                    <strong>Brand Deals:</strong> Calculated using standard rates of £0.02-0.08 per follower for ${nicheNames[niche]} brand partnerships.
+                </div>
+                <div class="calculation-item">
+                    <strong>Time Factor:</strong> Results adjusted for ${hours} hours/week availability. More time investment typically yields higher returns within each range.
+                </div>
+            `;
+            
+            // Show results and CTA
+            resultsSection.style.display = 'block';
+            ctaSection.style.display = 'block';
+            
+            // Smooth scroll to results
+            resultsSection.scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        // Allow Enter key to calculate
+        document.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                calculateRevenue();
+            }
+        });
+    </script>
+</body>
+</html>
